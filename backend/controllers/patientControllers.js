@@ -29,66 +29,66 @@ exports.registerDonor = async (req, res) => {
     }
 }
 
-exports.getRegisteredDonors = async (req, res) => {
-    try{
-        // fetch all the donors whose status is "registered"
-        const registeredDonors = await Donor.findAll({
-            where: {
-                status: "registered"
-            }
-        })
+// exports.getRegisteredDonors = async (req, res) => {
+//     try{
+//         // fetch all the donors whose status is "registered"
+//         const registeredDonors = await Donor.findAll({
+//             where: {
+//                 status: "registered"
+//             }
+//         })
 
-        res.status(200).json({
-            success: true,
-            message: "Successfully fetched list of all registered donors",
-            registeredDonors
-        })
-    }catch(err){
-        res.status(401).json({
-            success: false,
-            message: err
-        })
-    }
-}
+//         res.status(200).json({
+//             success: true,
+//             message: "Successfully fetched list of all registered donors",
+//             registeredDonors
+//         })
+//     }catch(err){
+//         res.status(401).json({
+//             success: false,
+//             message: err
+//         })
+//     }
+// }
 
-exports.getVerifiedDonors = async (req, res) => {
-    try{
-        const registeredDonors = await Donor.findAll({
-            where: {
-                status: "verified"
-            }
-        })
+// exports.getVerifiedDonors = async (req, res) => {
+//     try{
+//         const registeredDonors = await Donor.findAll({
+//             where: {
+//                 status: "verified"
+//             }
+//         })
 
-        res.status(200).json({
-            success: true,
-            message: "Successfully fetched list of all verified donors",
-            registeredDonors
-        })
-    }catch(err){
-        res.status(401).json({
-            success: false,
-            message: err
-        })
-    }
-}
+//         res.status(200).json({
+//             success: true,
+//             message: "Successfully fetched list of all verified donors",
+//             registeredDonors
+//         })
+//     }catch(err){
+//         res.status(401).json({
+//             success: false,
+//             message: err
+//         })
+//     }
+// }
 
-exports.getDonatedDonors = async (req, res) => {
-    try{
-        const registeredDonors = await Donor.findAll({
-            where: {
-                status: "donated"
-            }
-        })
+// exports.getDonatedDonors = async (req, res) => {
+//     try{
+//         const registeredDonors = await Donor.findAll({
+//             where: {
+//                 status: "donated"
+//             }
+//         })
 
-        res.status(200).json({
-            success: true,
-            message: "Successfully fetched list of all donated donors",
-            registeredDonors
-        })
-    }catch(err){
-        res.status(401).json({
-            success: false,
-            message: err
-        })
-    }
-}
+//         res.status(200).json({
+//             success: true,
+//             message: "Successfully fetched list of all donated donors",
+//             registeredDonors
+//         })
+//     }catch(err){
+//         res.status(401).json({
+//             success: false,
+//             message: err
+//         })
+//     }
+// }
