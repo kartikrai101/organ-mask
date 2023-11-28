@@ -6,10 +6,10 @@ const cors = require('cors')
 const sequelize = require('./database/connection');
 dotenv.config();
 
-app.use(bodyParser.json());
 app.use(cors({
     origin: '*'
 }))
+app.use(bodyParser.json());
 
 const patientRoutes = require('./routes/patientRoutes')
 const hospitalRoutes = require('./routes/hospitalRoutes')

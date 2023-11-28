@@ -7,6 +7,8 @@ exports.loginController = async (req, res) => {
     try{
         const {hospitalId, password} = req.body;
 
+        console.log(hospitalId, password)
+
         // find that hospital
         const hospital = await Hospital.findOne({
             where: {
@@ -16,7 +18,7 @@ exports.loginController = async (req, res) => {
         })
 
         if(hospital === null){
-            res.status(301).json({
+            res.json({
                 success: false,
                 message: "Invalid hospital ID or password!"
             })
