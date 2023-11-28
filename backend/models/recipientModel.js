@@ -1,6 +1,5 @@
 const sequelize = require('../database/connection');
 const {Sequelize, DataTypes} = require('sequelize');
-const { v4: uuidv4 } = require('uuid');
 
 const Recipient = sequelize.define('recipients', {
     recipientId: {

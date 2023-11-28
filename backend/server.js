@@ -12,8 +12,10 @@ app.use(cors({
 }))
 
 const patientRoutes = require('./routes/patientRoutes')
+const hospitalRoutes = require('./routes/hospitalRoutes')
 
 app.use('/api/patient', patientRoutes)
+app.use('/api/hospital', hospitalRoutes)
 
 app.listen(8000, () => {
     console.log("Listening to port ", process.env.PORT)

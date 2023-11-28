@@ -1,25 +1,25 @@
 const { v4: uuidv4 } = require('uuid');
-const Donor = require('../models/donorModel');
+const Recipient = require('../models/recipientModel');
 
-exports.registerDonor = async (req, res) => {
+exports.registerRecipient = async (req, res) => {
     try{
         // add this user to donor table
         const data = req.body;
-        const donorId = uuidv4();
-        const donorData = {
-            donorId: donorId, fname: data.fname, lname: data.lname, 
+        const recipientId = uuidv4();
+        const recipientData = {
+            recipientId: recipientId, fname: data.fname, lname: data.lname, 
             email: data.email, contact: data.contact, dob: data.dob, gender: data.gender, 
             bloodType: data.bloodType, state: data.state, district: data.district, address: data.address,
-            medicalHistoryUrl: data.medicalHistoryUrl, idProofUrl: data.idProofUrl, status: "registered", donatedOrgan: "-NA-",  blockchainToken: "-NA-"
+            medicalHistoryUrl: data.medicalHistoryUrl, idProofUrl: data.idProofUrl, status: "registered", requestedOrgan: "-NA-",  blockchainToken: "-NA-"
         }
 
         // insert this donor in the database
-        const newDonor = await Donor.create(donorData);
+        const newRecipient = await Recipient.create(recipientData);
 
         res.status(201).json({
             success: true,
-            message: "Donor successfully registered!",
-            newDonor
+            message: "Recipient successfully registered!",
+            newRecipient
         })
     }catch(err){
         res.status(401).json({
@@ -29,10 +29,10 @@ exports.registerDonor = async (req, res) => {
     }
 }
 
-exports.getRegisteredDonors = async (req, res) => {
+exports.getRegisteredRecipients = async (req, res) => {
     try{
         // fetch all the donors whose status is "registered"
-        const registeredDonors = await Donor.findAll({
+        const registeredRecipients = await Recipient.findAll({
             where: {
                 status: "registered"
             }
@@ -40,8 +40,8 @@ exports.getRegisteredDonors = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Successfully fetched list of all registered donors",
-            registeredDonors
+            message: "Successfully fetched list of all registered recipients",
+            registeredRecipients
         })
     }catch(err){
         res.status(401).json({
@@ -51,9 +51,9 @@ exports.getRegisteredDonors = async (req, res) => {
     }
 }
 
-exports.getVerifiedDonors = async (req, res) => {
+exports.getVerifiedRecipients = async (req, res) => {
     try{
-        const registeredDonors = await Donor.findAll({
+        const verifiedRecipients = await Recipient.findAll({
             where: {
                 status: "verified"
             }
@@ -61,8 +61,8 @@ exports.getVerifiedDonors = async (req, res) => {
 
         res.status(200).json({
             success: true,
-            message: "Successfully fetched list of all verified donors",
-            registeredDonors
+            message: "Successfully fetched list of all verified recipients",
+            verifiedRecipients
         })
     }catch(err){
         res.status(401).json({
@@ -72,18 +72,18 @@ exports.getVerifiedDonors = async (req, res) => {
     }
 }
 
-exports.getDonatedDonors = async (req, res) => {
+exports.getReceivedRecipients = async (req, res) => {
     try{
-        const registeredDonors = await Donor.findAll({
+        const receivedRecipients = await Recipient.findAll({
             where: {
-                status: "donated"
+                status: "received"
             }
         })
 
         res.status(200).json({
             success: true,
-            message: "Successfully fetched list of all donated donors",
-            registeredDonors
+            message: "Successfully fetched list of all received recipients",
+            receivedRecipients
         })
     }catch(err){
         res.status(401).json({
