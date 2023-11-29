@@ -1,69 +1,73 @@
 const sequelize = require('../database/connection');
-const {Sequelize, DataTypes} = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 
-const Donor = sequelize.define('donors', {
+const Donor = sequelize.define(
+  'donors',
+  {
     donorId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        primaryKey: true,
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true,
     },
     fname: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     lname: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     contact: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     dob: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     gender: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     bloodType: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     state: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     district: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     address: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     medicalHistoryUrl: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     idProofUrl: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     status: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     donatedOrgan: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     donatedOn: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     usedOn: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     blockchainToken: {
-        type: DataTypes.TEXT
-    }
-}, {
-    freezeTableName: true
-});
+      type: DataTypes.TEXT,
+    },
+  },
+  {
+    freezeTableName: true,
+  },
+);
 
-Donor.sync({alter: true})
+Donor.sync({ alter: true });
 module.exports = Donor;

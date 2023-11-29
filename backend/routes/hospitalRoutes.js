@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {loginController, getRegisteredDonors, getVerifiedDonors, getDonatedDonors, getRegisteredRecipients, getVerifiedRecipients, getReceivedRecipients} = require('../controllers/hospitalControllers')
+const {
+  loginController,
+  getRegisteredDonors,
+  getVerifiedDonors,
+  getDonatedDonors,
+  getRegisteredRecipients,
+  getVerifiedRecipients,
+  getReceivedRecipients,
+} = require('../controllers/hospitalControllers');
 
 router.route('/login').post(loginController);
 

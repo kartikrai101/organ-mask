@@ -2,32 +2,44 @@ const { v4: uuidv4 } = require('uuid');
 const Recipient = require('../models/recipientModel');
 
 exports.registerRecipient = async (req, res) => {
-    try{
-        // add this user to donor table
-        const data = req.body;
-        const recipientId = uuidv4();
-        const recipientData = {
-            recipientId: recipientId, fname: data.fname, lname: data.lname, 
-            email: data.email, contact: data.contact, dob: data.dob, gender: data.gender, 
-            bloodType: data.bloodType, state: data.state, district: data.district, address: data.address,
-            medicalHistoryUrl: data.medicalHistoryUrl, idProofUrl: data.idProofUrl, status: "registered", requestedOrgan: "-NA-",  blockchainToken: "-NA-"
-        }
+  try {
+    // add this user to donor table
+    const data = req.body;
+    const recipientId = uuidv4();
+    const recipientData = {
+      recipientId: recipientId,
+      fname: data.fname,
+      lname: data.lname,
+      email: data.email,
+      contact: data.contact,
+      dob: data.dob,
+      gender: data.gender,
+      bloodType: data.bloodType,
+      state: data.state,
+      district: data.district,
+      address: data.address,
+      medicalHistoryUrl: data.medicalHistoryUrl,
+      idProofUrl: data.idProofUrl,
+      status: 'registered',
+      requestedOrgan: '-NA-',
+      blockchainToken: '-NA-',
+    };
 
-        // insert this donor in the database
-        const newRecipient = await Recipient.create(recipientData);
+    // insert this donor in the database
+    const newRecipient = await Recipient.create(recipientData);
 
-        res.status(201).json({
-            success: true,
-            message: "Recipient successfully registered!",
-            newRecipient
-        })
-    }catch(err){
-        res.status(401).json({
-            success: false,
-            message: err
-        })
-    }
-}
+    res.status(201).json({
+      success: true,
+      message: 'Recipient successfully registered!',
+      newRecipient,
+    });
+  } catch (err) {
+    res.status(401).json({
+      success: false,
+      message: err,
+    });
+  }
+};
 
 // exports.getRegisteredRecipients = async (req, res) => {
 //     try{

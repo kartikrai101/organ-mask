@@ -1,68 +1,72 @@
 const sequelize = require('../database/connection');
-const {Sequelize, DataTypes} = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 
-const Recipient = sequelize.define('recipients', {
+const Recipient = sequelize.define(
+  'recipients',
+  {
     recipientId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        primaryKey: true,
+      type: DataTypes.STRING,
+      allowNull: false,
+      primaryKey: true,
     },
     fname: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     lname: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     contact: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     dob: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     gender: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     bloodType: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     state: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     district: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     address: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     medicalHistoryUrl: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     idProofUrl: {
-        type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     status: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     requestedOrgan: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     requestedOn: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     recievedOn: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     blockchainToken: {
-        type: DataTypes.TEXT
-    }
-}, {
-    freezeTableName: true
-});
+      type: DataTypes.TEXT,
+    },
+  },
+  {
+    freezeTableName: true,
+  },
+);
 
-Recipient.sync({alter: true})
+Recipient.sync({ alter: true });
 module.exports = Recipient;

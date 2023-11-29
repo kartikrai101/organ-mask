@@ -1,19 +1,23 @@
-const {Sequelize, DataTypes} = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
 
-const Hospital = sequelize.define('hospitals', {
+const Hospital = sequelize.define(
+  'hospitals',
+  {
     hospitalId: {
-        type: DataTypes.STRING,
-        primaryKey: true,
-        allowNull: false
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
     },
     password: {
-        type: DataTypes.STRING,
-        allowNull: false
-    }
-}, {
-    freezeTableName: true
-});
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    freezeTableName: true,
+  },
+);
 
-Hospital.sync({alter: true});
+Hospital.sync({ alter: true });
 module.exports = Hospital;
